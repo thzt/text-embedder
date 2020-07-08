@@ -1,0 +1,21 @@
+{
+  "name": "text-embedder",
+  "version": "1.0.0",
+  "description": "Embed content to text",
+  "main": "src/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thzt/text-embedder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thzt/text-embedder/issues"
+  },
+  "homepage": "https://github.com/thzt/text-embedder#readme",
+  "dependencies": {
+    "debug": "^4.1.1"
+  }
+}
