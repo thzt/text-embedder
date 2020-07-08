@@ -14,10 +14,11 @@ const log = require('./log');
  * 
  * @return 修改后的文本
  */
-const main = ({ text, embeds }, newline = '\n') => {
+const main = ({ text, embeds, beforeEmbed }, newline = '\n') => {
   log('开始执行');
 
   const lines = text.split(newline);
+
   lineEmbedder({
     lines,
     embeds: embeds.map(({ insert, replace, content }) => ({
@@ -25,7 +26,7 @@ const main = ({ text, embeds }, newline = '\n') => {
       replace,
       line: content,
     })),
-    beforeEmbed: ({ mode, args }) => {
+    beforeEmbed: beforeEmbed || (({ mode, args }) => {
       if (mode === 'insert') {
         const insert = args;
         log('嵌入内容，在第 %s 行之前', insert);
@@ -35,7 +36,7 @@ const main = ({ text, embeds }, newline = '\n') => {
       // replace mode
       const [from, to] = args;
       log('替换内容，从第 %s 行到第 %s 行', from, to);
-    },
+    }),
   });
 
   const modifiedText = lines.join(newline);
